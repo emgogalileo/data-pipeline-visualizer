@@ -20,7 +20,7 @@
             <a href="#" class="active">Monitoring</a>
         </nav>
         <div class="actions">
-            <button class="btn-primary">New Pipeline</button>
+            <button id="btn-new-pipeline" class="btn-primary">New Pipeline</button>
         </div>
     </header>
 
@@ -90,7 +90,7 @@
             
             <div class="log-panel">
                 <h3>Execution Logs</h3>
-                <div class="terminal">
+                <div class="terminal" style="max-height:200px;overflow:hidden;">
                     <p><span class="time">14:02:11</span> <span class="info">[INFO]</span> Initiating extraction from Salesforce API v52.0</p>
                     <p><span class="time">14:02:15</span> <span class="info">[INFO]</span> Downloaded 14,500 records in batch #45</p>
                     <p><span class="time">14:02:16</span> <span class="warn">[WARN]</span> Null values detected in 'Phone' field for 12 records, applying default.</p>
@@ -100,6 +100,20 @@
             </div>
         </section>
     </main>
+    <!-- New Pipeline Modal -->
+    <div id="pipeline-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center;padding:1rem;">
+        <div style="background:#111827;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:2rem;max-width:480px;width:100%;position:relative;">
+            <button id="pipeline-modal-close" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer;">&times;</button>
+            <h3 style="font-family:'Outfit',sans-serif;margin-bottom:1.5rem;">New ETL Pipeline</h3>
+            <label style="display:block;font-size:0.85rem;color:#94a3b8;margin-bottom:0.4rem;">Pipeline Name</label>
+            <input id="pipeline-name-input" type="text" placeholder="e.g. Orders to Warehouse" style="width:100%;padding:0.65rem 0.9rem;background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:0.9rem;margin-bottom:1.25rem;outline:none;">
+            <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+                <button id="pipeline-modal-close-btn" onclick="document.getElementById('pipeline-modal').style.display='none'" style="padding:0.5rem 1.2rem;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#94a3b8;cursor:pointer;">Cancel</button>
+                <button id="pipeline-modal-create" style="padding:0.5rem 1.4rem;border-radius:8px;border:none;background:#38bdf8;color:#000;font-weight:600;cursor:pointer;">Create Pipeline</button>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
